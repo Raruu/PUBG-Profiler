@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>PUBG_Profiler</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\icons\pubg_round.ico</ApplicationIcon>
+    <StartupObject />
+    <AssemblyName>PUBG Profiler</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\icons\pubg_round.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\icons\pubg_round.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

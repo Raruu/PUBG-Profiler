@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="s_AppTitle" >PUBG Profiler</system:String>
+    <system:String x:Key="s_Close">Close</system:String>
+    <system:String x:Key="s_MaxNorWindow">Maximize || Normal</system:String>
+    <system:String x:Key="s_MinimizeWindow">Minimize</system:String>
+    <system:String x:Key="s_404">404 Not Found :[</system:String>
+    <system:String x:Key="s_ApplyToolTip">Apply Selected Preset</system:String>
+    <system:String x:Key="s_LastApplied">Last Applied:</system:String>
+    <system:String x:Key="s_DoYouReally">Do you really want to</system:String>
+    <system:String x:Key="s_Failed">Failed</system:String>
+    <system:String x:Key="s_Cancel">Cancel</system:String>
+    <system:String x:Key="s_Ok">Ok</system:String>
+    <system:String x:Key="s_Of">Of</system:String>
+    
+    <system:String x:Key="s_Apply" >Apply</system:String>
+    <system:String x:Key="s_Add">Import</system:String>
+    <system:String x:Key="s_Export">Export</system:String>
+    <system:String x:Key="s_Delete">Delete</system:String>
+    <system:String x:Key="s_Rename">Rename</system:String>
+    <system:String x:Key="s_Refresh">Refresh</system:String>
+    <system:String x:Key="s_Duplicate">Duplicate</system:String>
+    <system:String x:Key="s_Replace">Replace</system:String>
+    <system:String x:Key="s_AddThis">Add Current</system:String>
+    <system:String x:Key="s_ComboBoxHint">Select Preset</system:String>    
+    <system:String x:Key="s_Default">Default</system:String>
+    <system:String x:Key="s_Yes">Of Course</system:String>
+    <system:String x:Key="s_NO">No</system:String>  
+    <system:String x:Key="s_PUBG">Run PUBG</system:String>
+    <system:String x:Key="s_ApplynRun">Apply and Run</system:String>
+
+    <system:String x:Key="s_Scope">Scope</system:String>
+    <system:String x:Key="s_UPerScopeMouse">Using PerScope Mouse Sensitivity</system:String>
+    <system:String x:Key="s_Sensitivity">Sensitivity</system:String>
+    <system:String x:Key="s_Scoping">Scoping</system:String>
+    <system:String x:Key="s_InvertMouse">Invert Mouse</system:String>
+    <system:String x:Key="s_General">General</system:String>
+    <system:String x:Key="s_Vertical">Vertical</system:String>
+    <system:String x:Key="s_Aim">Aim</system:String>
+    <system:String x:Key="s_Ads">ADS</system:String>
+    <system:String x:Key="s_Save">Save</system:String>
+</ResourceDictionary>

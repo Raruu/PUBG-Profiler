@@ -1,0 +1,229 @@
+﻿<UserControl x:Class="PUBG_Profiler.Content.TuneContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PUBG_Profiler.Content"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:Background="{DynamicResource MaterialDesignPaper}"
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal" 
+             TextOptions.TextRenderingMode="Auto"     
+             FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Inherit" PrimaryColor="Amber" SecondaryColor="LightBlue" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--#region TopBar-->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontSize="20"
+                   Name="CurrentFileName" Text="Examlpe" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,1,15,0">
+            <Button Click="RefreshProperty"
+                    Style="{StaticResource MaterialDesignFlatAccentButton}" Margin="0,0,5,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource s_Refresh}"/>
+                    <materialDesign:PackIcon Kind="Refresh" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+            
+            <Button Click="SaveBtnClick" IsEnabled="True"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{DynamicResource s_Save}"/>
+                    <materialDesign:PackIcon Kind="ContentSaveCog" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <!--#endregion-->
+
+        <GroupBox Grid.Column="0" Grid.Row="1" Style="{StaticResource MaterialDesignCardGroupBox}" Header="{DynamicResource s_Sensitivity}" Margin="5,3">
+            <Grid Name="AnotherGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="47"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{DynamicResource s_InvertMouse}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                <ToggleButton Grid.Row="0"  Grid.ColumnSpan="3" Name="ToggleInvertMouse"
+                              Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <!--General-->
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource s_General}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Slider Grid.Row="1" Grid.Column="1" Value="{Binding ElementName=__General,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1" 
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"
+                        VerticalAlignment="Center" Margin="7,0,7,0"
+                       />
+                <TextBox Grid.Row="1" Grid.Column="2" Name="__General" Tag="0x00"
+                         VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                         MinWidth="25" MaxWidth="25" MaxLength="3" KeyDown="EnterRemoveFocus"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                <!--Vertical-->
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{DynamicResource s_Vertical}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Slider Grid.Row="2" Grid.Column="1" Value="{Binding ElementName=__Vertical,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="0" Maximum="2" 
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Name="__Vertical" Tag="0x0v"
+                         VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                         MinWidth="25" MaxWidth="27" MaxLength="6" KeyDown="EnterRemoveFocus"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                <!--Aim-->
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="{DynamicResource s_Aim}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Slider Grid.Row="3" Grid.Column="1" Value="{Binding ElementName=__Aim,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Name="__Aim" Tag="0x01"
+                         VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                         MinWidth="25" MaxWidth="25" MaxLength="3" KeyDown="EnterRemoveFocus"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                <!--Ads-->
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="{DynamicResource s_Ads}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Slider Grid.Row="4" Grid.Column="1" Value="{Binding ElementName=__Ads,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                <TextBox Grid.Row="4" Grid.Column="2" Name="__Ads" Tag="0x02"
+                         VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                         MinWidth="25" MaxWidth="25" MaxLength="3" KeyDown="EnterRemoveFocus"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                <!--Scoping-->
+                <TextBlock Grid.Row="5" Grid.Column="0" Text="{DynamicResource s_Scoping}" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Slider Grid.Row="5" Grid.Column="1" Value="{Binding ElementName=__Scoping,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"
+                        VerticalAlignment="Center" Margin="7,0,7,0"
+                        IsEnabled="{Binding Iv_UPerScope}"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Name="__Scoping" Tag="0x09"
+                         VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                         MinWidth="25" MaxWidth="25" MaxLength="3" KeyDown="EnterRemoveFocus"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"
+                         IsEnabled="{Binding Iv_UPerScope}"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignCardGroupBox}" Header="{DynamicResource s_Scope}" Margin="5,3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{DynamicResource s_UPerScopeMouse}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                <ToggleButton Grid.Row="0" Name="ScopeUsingPerScope" Click="UPerScope_Click"
+                              Style="{StaticResource MaterialDesignSwitchAccentToggleButton}" 
+                              Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+                <Grid Name="ScopeGrid" Grid.Row="1" MinHeight="170" IsEnabled="{Binding ElementName=ScopeUsingPerScope,Path=IsChecked}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!-- 2X-->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="2X" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="0" Grid.Column="1"  Value="{Binding ElementName=__2X,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"  
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="2" KeyDown="EnterRemoveFocus" 
+                         Name="__2X" MinWidth="25" MaxWidth="25" MaxLength="3"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                    <!-- 3X-->
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="3X" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="1" Grid.Column="1" Value="{Binding ElementName=__3X,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"  
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                    <TextBox Grid.Row="1" Grid.Column="2" KeyDown="EnterRemoveFocus" 
+                         Name="__3X" MinWidth="25" MaxWidth="25" MaxLength="3"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                    <!-- 4X-->
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="4X" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="2" Grid.Column="1" Value="{Binding ElementName=__4X,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"  
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                    <TextBox Grid.Row="2" Grid.Column="2" KeyDown="EnterRemoveFocus" 
+                         Name="__4X" MinWidth="25" MaxWidth="25" MaxLength="3"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                    <!-- 6X-->
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="6X" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="3" Grid.Column="1" Value="{Binding ElementName=__6X,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"  
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                    <TextBox Grid.Row="3" Grid.Column="2" KeyDown="EnterRemoveFocus" 
+                         Name="__6X" MinWidth="25" MaxWidth="25" MaxLength="3"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                    <!-- 8X-->
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="8X" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="4" Grid.Column="1" Value="{Binding ElementName=__8X,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"  
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                    <TextBox Grid.Row="4" Grid.Column="2" KeyDown="EnterRemoveFocus" 
+                         Name="__8X" MinWidth="25" MaxWidth="25" MaxLength="3"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                    <!-- 15X-->
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="15X" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Slider Grid.Row="5" Grid.Column="1" Value="{Binding ElementName=__15X,Path=Text}"
+                        TickPlacement="BottomRight" TickFrequency="1"
+                        Minimum="1" Maximum="100" IsSnapToTickEnabled="True"  
+                        VerticalAlignment="Center" Margin="7,0,7,0"/>
+                    <TextBox Grid.Row="5" Grid.Column="2" KeyDown="EnterRemoveFocus" 
+                         Name="__15X" MinWidth="25" MaxWidth="25" MaxLength="3"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                         materialDesign:TextFieldAssist.CharacterCounterStyle="{x:Null}"/>
+                </Grid>
+            </Grid>           
+        </GroupBox>
+        
+    </Grid>
+</UserControl>

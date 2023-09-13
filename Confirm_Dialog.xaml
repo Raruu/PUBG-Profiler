@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="PUBG_Profiler.Confirm_Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PUBG_Profiler"
+        mc:Ignorable="d"   
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"        
+        >
+
+    <Grid MinHeight="150" MinWidth="500"  >
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,30,0,0">
+            <TextBlock x:Name="textContent"
+                   Text="{DynamicResource s_DoYouReally}" FontSize="17"/>
+            <TextBlock x:Name="QMark" Text=" ?" FontSize="17"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,20,10">
+            <Button Name="Btn_No"  Visibility="Visible"
+                Content="{DynamicResource s_NO}" Click="No_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,10,0"/>
+            <Button Click="Yes_Click" Name="Btn_Yes"
+                    Content="{DynamicResource s_Yes}" Style="{StaticResource MaterialDesignFlatButton}"/>
+        </StackPanel>
+    </Grid>
+
+</UserControl>
